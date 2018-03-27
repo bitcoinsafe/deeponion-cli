@@ -1,6 +1,8 @@
-## Command Line Interface
+## Command Line Interface for DeepOnion
 
-This a console-based CLI for RPC (*remote procedure call*) access of local or remote DeepOnion Wallets and/or Daemons.
+![dologo](https://camo.githubusercontent.com/b3793963a4860e775c6180b1cdbf7480e469f874/68747470733a2f2f696d6167652e6962622e636f2f6d66523452362f444f2e706e67)
+
+This a console-based CLI for RPC (*remote procedure call*) access of local or remote Wallets and/or Daemons.
 
 This is how it looks like in action (Windows & Mac):
 
