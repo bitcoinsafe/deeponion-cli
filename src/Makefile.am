@@ -6,24 +6,6 @@ EXTRA_LIBRARIES =
 BITCOIN_CONFIG_INCLUDES=-I$(builddir)/config
 BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
 
-LIBBITCOIN_COMMON=libbitcoin_common.a
-LIBBITCOIN_CLI=libbitcoin_cli.a
-
-if HAVE_SSE2
-IBBITCOIN_SSE2=libbitcoin_sse2.a
-endif
-
-EXTRA_LIBRARIES += \
-        $(LIBBITCOIN_CLI)
-
-noinst_LIBRARIES = \
-  libbitcoin_util.a \
-  libbitcoin_cli.a
-
-if HAVE_SSE2
-noinst_LIBRARIES += libbitcoin_sse2.a
-endif
-
 bin_PROGRAMS =
 TESTS =
 
@@ -32,7 +14,7 @@ if BUILD_BITCOIN_CLI
 endif
 
 .PHONY: FORCE
-# bitcoin core #
+# DeepOnion CLI core #
 BITCOIN_CORE_H = \
   rpcclient.h \
   rpcprotocol.h \
@@ -59,25 +41,11 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-version.$(OBJEXT): obj/build.h
 
-# common: shared between bitcoind, and bitcoin-qt and non-server tools
-libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
-libbitcoin_common_a_SOURCES = \
-  version.cpp \
-  $(BITCOIN_CORE_H)
-
-nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
-
-if HAVE_SSE2
-libbitcoin_sse2_a_SOURCES = scrypt-sse2.cpp
-libbitcoin_sse2_a_CPPFLAGS = $(BITCOIN_INCLUDES) -msse2 -mstackrealign
-endif
-
 # deeponion-cli binary #
 DeepOnion_cli_LDADD = \
-  libbitcoin_cli.a \
-  libbitcoin_common.a \
   $(BOOST_LIBS)
-DeepOnion_cli_SOURCES = deeponion-cli.cpp
+DeepOnion_cli_SOURCES = deeponion-cli.cpp \
+			version.cpp
 #
 
 if TARGET_WINDOWS

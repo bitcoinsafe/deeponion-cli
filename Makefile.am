@@ -1,5 +1,5 @@
 ACLOCAL_AMFLAGS = -I src/m4
-SUBDIRS = tor src
+SUBDIRS = src
 .PHONY: deploy FORCE
 
 GZIP_ENV="-9n"
