@@ -4,7 +4,7 @@
 
 This a console-based CLI for RPC (*remote procedure call*) access of local or remote Wallets and/or Daemons.
 
-This is how it looks like in action (Windows & Mac):
+This is how it looks like in action (Windows, Mac, and Linux):
 
 **Get Blockchain Info**
 
@@ -13,6 +13,10 @@ This is how it looks like in action (Windows & Mac):
 **Get Blockchain Info on Mac**
 
 ![rpcaccessmac](https://img3.picload.org/image/dailwida/mac_cli.png)
+
+**Get Blockchain Info on Linux**
+
+![rpcaccessunix](https://img3.picload.org/image/daicdial/cli.png)
 
 **Get Transaction**
 
